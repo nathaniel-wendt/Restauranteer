@@ -69,7 +69,7 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
 }
 
 /**
- * Initialize leaflet map, called from HTML.
+ * Initialize leaflet map, called from HTML. - Uncomment code below if using MapBox API
  */
 initMap = () => {
   self.newMap = L.map('map', {
@@ -88,6 +88,10 @@ initMap = () => {
 
   updateRestaurants();
 }
+
+/**
+ * Initialize Google map, called from HTML - Uncomment code below if using Google Maps API
+ */
 /* window.initMap = () => {
   let loc = {
     lat: 40.722216,
@@ -160,10 +164,11 @@ createRestaurantHTML = (restaurant) => {
 
   const image = document.createElement('img');
   image.className = 'restaurant-img';
+  image.alt = 'photo of the restaurant ' + restaurant.name;
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   li.append(image);
 
-  const name = document.createElement('h1');
+  const name = document.createElement('h2');
   name.innerHTML = restaurant.name;
   li.append(name);
 
@@ -178,13 +183,15 @@ createRestaurantHTML = (restaurant) => {
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
+  more.tabIndex = '3';
+  more.setAttribute('aria-label', 'view details for ' + restaurant.name);
   li.append(more)
 
   return li
 }
 
 /**
- * Add markers for current restaurants to the map.
+ * Add markers for current restaurants to the map. - Uncomment code below if using MapBox API
  */
 addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
@@ -197,7 +204,11 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 
-} 
+}
+
+/**
+ * Add markers for current restaurants to the map. - Uncomment code below if using Google Maps API
+ */
 /* addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     // Add marker to the map

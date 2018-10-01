@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 /**
- * Initialize leaflet map
+ * Initialize leaflet map - Uncomment code below if using MapBox API
  */
 initMap = () => {
   fetchRestaurantFromURL((error, restaurant) => {
@@ -33,7 +33,11 @@ initMap = () => {
       DBHelper.mapMarkerForRestaurant(self.restaurant, self.newMap);
     }
   });
-}  
+}
+
+/**
+ *  Initialize Google Map - Uncomment code below if using Google Maps API
+ */
  
 /* window.initMap = () => {
   fetchRestaurantFromURL((error, restaurant) => {
@@ -87,7 +91,8 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   address.innerHTML = restaurant.address;
 
   const image = document.getElementById('restaurant-img');
-  image.className = 'restaurant-img'
+  image.className = 'restaurant-img';
+  image.alt = 'image of the restaurant ' + restaurant.name;
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
   const cuisine = document.getElementById('restaurant-cuisine');
@@ -126,7 +131,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
  */
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
-  const title = document.createElement('h2');
+  const title = document.createElement('h3');
   title.innerHTML = 'Reviews';
   container.appendChild(title);
 
