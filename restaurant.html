@@ -15,13 +15,13 @@
   <!-- Beginning header -->
   <header>
     <!-- Beginning nav -->
-    <nav>
+    <nav aria-label="nav" role="navigation">
       <h1><a href="/">Restaurant Review</a></h1>
+      <!-- Beginning breadcrumb -->
+      <ul id="breadcrumb" aria-label="Breadcrumb">
+        <li><a href="/">Home</a></li>
+      </ul>
     </nav>
-    <!-- Beginning breadcrumb -->
-    <ul id="breadcrumb" aria-label="nav">
-      <li><a href="/">Home</a></li>
-    </ul>
     <!-- End breadcrumb -->
     <!-- End nav -->
   </header>
@@ -31,7 +31,7 @@
   <main id="maincontent">
     <!-- Beginning map -->
     <section id="map-container">
-      <div id="map" aria-label="map-container"></div>
+      <div id="map" aria-label="map-container" role="application"></div>
     </section>
     <!-- End map -->
     <!-- Beginning restaurant -->
